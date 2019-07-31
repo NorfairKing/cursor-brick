@@ -10,6 +10,22 @@ import Cursor.Tree
 import Brick.Types
 import Brick.Widgets.Core
 
+treeCursorWidgetM ::
+     forall a b n m. Monad m
+  => ([CTree b] -> b -> [CTree b] -> Widget n -> m (Widget n))
+  -> (a -> CForest b -> m (Widget n))
+  -> TreeCursor a b
+  -> m (Widget n)
+treeCursorWidgetM = traverseTreeCursor
+
+treeCursorWidget ::
+     forall a b n.
+     ([CTree b] -> b -> [CTree b] -> Widget n -> Widget n)
+  -> (a -> CForest b -> Widget n)
+  -> TreeCursor a b
+  -> Widget n
+treeCursorWidget = foldTreeCursor
+
 traverseTreeCursor ::
      forall a b m c. Monad m
   => ([CTree b] -> b -> [CTree b] -> c -> m c)
@@ -17,7 +33,7 @@ traverseTreeCursor ::
   -> TreeCursor a b
   -> m c
 traverseTreeCursor wrapFunc currentFunc TreeCursor {..} =
-   currentFunc treeCurrent treeBelow >>= wrapAbove treeAbove
+  currentFunc treeCurrent treeBelow >>= wrapAbove treeAbove
   where
     wrapAbove :: Maybe (TreeAbove b) -> c -> m c
     wrapAbove Nothing = pure
