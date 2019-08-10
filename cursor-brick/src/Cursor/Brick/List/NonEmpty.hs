@@ -23,6 +23,7 @@ horizontalNonEmptyCursorWidget ::
 horizontalNonEmptyCursorWidget beforeFunc curFunc afterFunc =
   nonEmptyCursorWidget $ \befores current afters ->
     hBox $ concat [map beforeFunc befores, [curFunc current], map afterFunc afters]
+
 verticalNonEmptyCursorWidgetM ::
      Applicative f
   => (b -> f (Widget n))
@@ -45,10 +46,3 @@ nonEmptyCursorWidgetM = foldNonEmptyCursor
 
 nonEmptyCursorWidget :: ([b] -> a -> [b] -> Widget n) -> NonEmptyCursor a b -> Widget n
 nonEmptyCursorWidget = foldNonEmptyCursor
-
-traverseNonEmptyCursor :: ([b] -> a -> [b] -> f c) -> NonEmptyCursor a b -> f c
-traverseNonEmptyCursor = foldNonEmptyCursor
-
-foldNonEmptyCursor :: ([b] -> a -> [b] -> c) -> NonEmptyCursor a b -> c
-foldNonEmptyCursor func NonEmptyCursor {..} =
-  func (reverse nonEmptyCursorPrev) nonEmptyCursorCurrent nonEmptyCursorNext

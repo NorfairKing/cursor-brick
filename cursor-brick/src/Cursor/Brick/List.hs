@@ -12,9 +12,3 @@ listCursorWidgetM = foldListCursor
 
 listCursorWidget :: ([a] -> [a] -> Widget n) -> ListCursor a -> Widget n
 listCursorWidget = foldListCursor
-
-traverseListCursor :: ([a] -> [a] -> f b) -> ListCursor a -> f b
-traverseListCursor = foldListCursor
-
-foldListCursor :: ([a] -> [a] -> b) -> ListCursor a -> b
-foldListCursor func ListCursor {..} = func (reverse listCursorPrev) listCursorNext

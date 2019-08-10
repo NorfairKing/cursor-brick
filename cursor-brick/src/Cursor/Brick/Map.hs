@@ -73,10 +73,3 @@ mapCursorWidgetM ::
   -> MapCursor kc vc k v
   -> m (Widget n)
 mapCursorWidgetM = foldMapCursor
-
-traverseMapCursor ::
-     ([(k, v)] -> KeyValueCursor kc vc k v -> [(k, v)] -> f c) -> MapCursor kc vc k v -> f c
-traverseMapCursor combFunc = foldNonEmptyCursor combFunc . mapCursorList
-
-foldMapCursor :: ([(k, v)] -> KeyValueCursor kc vc k v -> [(k, v)] -> c) -> MapCursor kc vc k v -> c
-foldMapCursor combFunc = foldNonEmptyCursor combFunc . mapCursorList
