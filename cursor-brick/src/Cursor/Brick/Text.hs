@@ -1,3 +1,5 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Cursor.Brick.Text where
 
 import qualified Data.Text as T
@@ -21,7 +23,12 @@ selectedTextCursorWidget n tc =
 --
 -- This function does not wrap the given text.
 textCursorWidget :: TextCursor -> Widget n
-textCursorWidget tc = txt $ sanitiseText $ rebuildTextCursor tc
+textCursorWidget tc =
+  txt $
+  let t = sanitiseText $ rebuildTextCursor tc
+   in if T.null t
+        then " "
+        else t
 
 -- | Draw an arbitrary Text, it will be sanitised.
 textWidget :: Text -> Widget n
