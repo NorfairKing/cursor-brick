@@ -13,7 +13,9 @@ import Brick.Widgets.Core as Brick
 
 import Cursor.Brick.Text
 
--- | This function does not wrap lines.
+-- | Make a textfield cursor widget with a blink-y box.
+--
+-- This function does not wrap lines.
 -- Otherwise, because of the way indexes work, there would be rendering errors for text that crosses the side of the terminal.
 selectedTextFieldCursorWidget :: n -> TextFieldCursor -> Widget n
 selectedTextFieldCursorWidget n (TextFieldCursor tfc) =
@@ -22,7 +24,9 @@ selectedTextFieldCursorWidget n (TextFieldCursor tfc) =
   where
     t = txt . sanitiseText
 
--- | This function does not wrap lines .
+-- | Make a textfield cursor widget without a blink-y box.
+--
+-- This function does not wrap lines .
 textFieldCursorWidget :: TextFieldCursor -> Widget n
 textFieldCursorWidget (TextFieldCursor tfc) =
   flip foldNonEmptyCursor tfc $ \befores current afters ->
