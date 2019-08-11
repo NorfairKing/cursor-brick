@@ -3,12 +3,9 @@
 
 module Cursor.Brick.Tree where
 
-import Control.Monad
-
 import Cursor.Tree
 
 import Brick.Types
-import Brick.Widgets.Core
 
 treeCursorWidgetM ::
      forall a b n m. Monad m

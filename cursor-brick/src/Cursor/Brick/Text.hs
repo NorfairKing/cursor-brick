@@ -17,7 +17,8 @@ import Brick.Widgets.Core as Brick
 -- Otherwise, because of the way indexes work, there would be rendering errors for text that crosses the side of the terminal.
 selectedTextCursorWidget :: n -> TextCursor -> Widget n
 selectedTextCursorWidget n tc =
-  Brick.showCursor n (Brick.Location (textCursorIndex tc, 0)) $ textCursorWidget tc
+  Brick.showCursor n (Brick.Location (textCursorIndex tc, 0)) $
+  textCursorWidget tc
 
 -- | Make a text cursor widget without a blink-y box.
 --
@@ -40,11 +41,11 @@ textWidgetWrap = txtWrap . nonNullLinesText . sanitiseText
 
 -- | Draw an arbitrary single-line Text, it will be sanitised.
 textLineWidget :: Text -> Widget n
-textLineWidget = txt . nonNullText.sanitiseText
+textLineWidget = txt . nonNullText . sanitiseText
 
 -- | Draw an arbitrary single-line Text (with wrapping), it will be sanitised.
 textLineWidgetWrap :: Text -> Widget n
-textLineWidgetWrap = txtWrap .nonNullText. sanitiseText
+textLineWidgetWrap = txtWrap . nonNullText . sanitiseText
 
 -- | Makes every line of a Text non-empty using `nonNullText`
 nonNullLinesText :: Text -> Text

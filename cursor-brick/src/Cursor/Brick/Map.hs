@@ -3,16 +3,10 @@
 
 module Cursor.Brick.Map where
 
-import Control.Monad
-
-import Cursor.List.NonEmpty
 import Cursor.Map
 
 import Brick.Types
 import Brick.Widgets.Core
-
-import Cursor.Brick.List.NonEmpty
-import Cursor.Brick.Map.KeyValue
 
 horizontalMapCursorWidget ::
      (k -> v -> Widget n)
@@ -23,7 +17,11 @@ horizontalMapCursorWidget ::
 horizontalMapCursorWidget beforeFunc curFunc afterFunc =
   mapCursorWidget $ \befores current afters ->
     hBox $
-    concat [map (uncurry beforeFunc) befores, [curFunc current], map (uncurry afterFunc) afters]
+    concat
+      [ map (uncurry beforeFunc) befores
+      , [curFunc current]
+      , map (uncurry afterFunc) afters
+      ]
 
 horizontalMapCursorWidgetM ::
      Applicative f
@@ -36,7 +34,11 @@ horizontalMapCursorWidgetM beforeFunc curFunc afterFunc =
   mapCursorWidgetM $ \befores current afters ->
     hBox <$>
     sequenceA
-      (concat [map (uncurry beforeFunc) befores, [curFunc current], map (uncurry afterFunc) afters])
+      (concat
+         [ map (uncurry beforeFunc) befores
+         , [curFunc current]
+         , map (uncurry afterFunc) afters
+         ])
 
 verticalMapCursorWidget ::
      (k -> v -> Widget n)
@@ -47,7 +49,11 @@ verticalMapCursorWidget ::
 verticalMapCursorWidget beforeFunc curFunc afterFunc =
   mapCursorWidget $ \befores current afters ->
     vBox $
-    concat [map (uncurry beforeFunc) befores, [curFunc current], map (uncurry afterFunc) afters]
+    concat
+      [ map (uncurry beforeFunc) befores
+      , [curFunc current]
+      , map (uncurry afterFunc) afters
+      ]
 
 verticalMapCursorWidgetM ::
      Applicative f
@@ -60,7 +66,11 @@ verticalMapCursorWidgetM beforeFunc curFunc afterFunc =
   mapCursorWidgetM $ \befores current afters ->
     vBox <$>
     sequenceA
-      (concat [map (uncurry beforeFunc) befores, [curFunc current], map (uncurry afterFunc) afters])
+      (concat
+         [ map (uncurry beforeFunc) befores
+         , [curFunc current]
+         , map (uncurry afterFunc) afters
+         ])
 
 mapCursorWidget ::
      ([(k, v)] -> KeyValueCursor kc vc k v -> [(k, v)] -> Widget n)
