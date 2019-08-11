@@ -20,9 +20,7 @@ import Cursor.Brick.Text
 selectedTextFieldCursorWidget :: n -> TextFieldCursor -> Widget n
 selectedTextFieldCursorWidget n (TextFieldCursor tfc) =
   flip foldNonEmptyCursor tfc $ \befores current afters ->
-    vBox $ concat [map t befores, [selectedTextCursorWidget n current], map t afters]
-  where
-    t = txt . sanitiseText
+    vBox $ concat [map textWidget befores, [selectedTextCursorWidget n current], map textWidget afters]
 
 -- | Make a textfield cursor widget without a blink-y box.
 --
@@ -30,6 +28,4 @@ selectedTextFieldCursorWidget n (TextFieldCursor tfc) =
 textFieldCursorWidget :: TextFieldCursor -> Widget n
 textFieldCursorWidget (TextFieldCursor tfc) =
   flip foldNonEmptyCursor tfc $ \befores current afters ->
-    vBox $ concat [map t befores, [textCursorWidget current], map t afters]
-  where
-    t = txt . sanitiseText
+    vBox $ concat [map textWidget befores, [textCursorWidget current], map textWidget afters]

@@ -32,11 +32,30 @@ textCursorWidget tc =
 
 -- | Draw an arbitrary Text, it will be sanitised.
 textWidget :: Text -> Widget n
-textWidget = txt . sanitiseText
+textWidget = txt . nonNullLinesText . sanitiseText
 
 -- | Draw an arbitrary Text (with wrapping), it will be sanitised.
 textWidgetWrap :: Text -> Widget n
-textWidgetWrap = txtWrap . sanitiseText
+textWidgetWrap = txtWrap . nonNullLinesText . sanitiseText
+
+-- | Draw an arbitrary single-line Text, it will be sanitised.
+textLineWidget :: Text -> Widget n
+textLineWidget = txt . nonNullText.sanitiseText
+
+-- | Draw an arbitrary single-line Text (with wrapping), it will be sanitised.
+textLineWidgetWrap :: Text -> Widget n
+textLineWidgetWrap = txtWrap .nonNullText. sanitiseText
+
+-- | Makes every line of a Text non-empty using `nonNullText`
+nonNullLinesText :: Text -> Text
+nonNullLinesText = T.intercalate "\n" . map nonNullText . T.splitOn "\n"
+
+-- | Makes a text non-empty.
+--
+-- This turns the empty text into " " and leaves other text as-is.
+nonNullText :: Text -> Text
+nonNullText "" = " "
+nonNullText t = t
 
 -- | Replace tabs by spaces so that brick doesn't render nonsense.
 --
