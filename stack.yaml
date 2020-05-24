@@ -1,14 +1,14 @@
-resolver: lts-12.14
+resolver: lts-12.23
 packages:
 - cursor-brick
 extra-deps:
 - git: https://github.com/NorfairKing/cursor.git
-  commit: 919b798bf92ea381fd13e68c0f77d19a79296c97
+  commit: 6b8d2fab22cf380aaac5f6d0853ec8b3d4cdd0e1
   subdirs:
     - cursor
     - cursor-gen
 - git: https://github.com/NorfairKing/validity.git
-  commit: f127f52cda8d7271e7ec38c9d722e0112c12ae2c
+  commit: b8c4cb4cafef7eb2feabaf767eb0d96c5fb5b573
   subdirs:
   - genvalidity
   - genvalidity-aeson
@@ -40,4 +40,9 @@ extra-deps:
   - validity-unordered-containers
   - validity-uuid
   - validity-vector
+nix:
+  path: [ "nixpkgs=https://github.com/NixOS/nixpkgs/archive/323fe92057bb38475a446ff5e18d3b388c2e4403.tar.gz" ]
+  add-gc-roots: true
+  packages:
+  - zlib
 

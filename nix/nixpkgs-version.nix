@@ -1,7 +1,4 @@
-# To update:
-# nix-prefetch-url --unpack https://github.com/NixOS/nixpkgs/archive/07723f14bb132f6d65c74b953bef39cd80457273.tar.gz
-
 {
-  rev    = "d81e10ab83d1539a624bfde2a420073706c3e5bf";
-  sha256 = "sha256:03iyf4qszsrbslz8xayph4b8zp83naw3asma1png56k58vpcyj1w";
+  rev = "a87b506140a7267477103759c3f8da5b2e8d994e";
+  sha256 = "sha256:0h8i0b2dyz8bppkfs5srkaq4hrc9ngb6idg7cq9ngvz3szr6xx08";
 }

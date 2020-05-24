@@ -7,6 +7,7 @@ let
     overlays = [
       validity-overlay
       cursor-overlay
+      (import ./nix/gitignore-src.nix)
       (import ./nix/overlay.nix)
     ];
     config.allowUnfree = true;
