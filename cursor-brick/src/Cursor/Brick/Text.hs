@@ -2,13 +2,11 @@
 
 module Cursor.Brick.Text where
 
-import qualified Data.Text as T
-import Data.Text (Text)
-
-import Cursor.Text
-
 import Brick.Types as Brick
 import Brick.Widgets.Core as Brick
+import Cursor.Text
+import Data.Text (Text)
+import qualified Data.Text as T
 
 -- | Make a text cursor widget with a blink-y box.
 --
@@ -18,7 +16,7 @@ import Brick.Widgets.Core as Brick
 selectedTextCursorWidget :: n -> TextCursor -> Widget n
 selectedTextCursorWidget n tc =
   Brick.showCursor n (Brick.Location (textCursorIndex tc, 0)) $
-  textCursorWidget tc
+    textCursorWidget tc
 
 -- | Make a text cursor widget without a blink-y box.
 --
@@ -26,10 +24,10 @@ selectedTextCursorWidget n tc =
 textCursorWidget :: TextCursor -> Widget n
 textCursorWidget tc =
   txt $
-  let t = sanitiseText $ rebuildTextCursor tc
-   in if T.null t
-        then " "
-        else t
+    let t = sanitiseText $ rebuildTextCursor tc
+     in if T.null t
+          then " "
+          else t
 
 -- | Draw an arbitrary Text, it will be sanitised.
 textWidget :: Text -> Widget n

@@ -1,5 +1,3 @@
-{-# LANGUAGE RecordWildCards #-}
-
 module Cursor.Brick.List.NonEmpty where
 
 import Brick.Types as B
@@ -28,7 +26,7 @@ verticalNonEmptyCursorTable ::
 verticalNonEmptyCursorTable prevFunc curFunc nextFunc =
   nonEmptyCursorWidget
     ( \ps c ns ->
-        tableWidget $ (map prevFunc ps ++ [curFunc c] ++ map nextFunc ns)
+        tableWidget $ map prevFunc ps ++ [curFunc c] ++ map nextFunc ns
     )
 
 verticalNonEmptyCursorTableM ::

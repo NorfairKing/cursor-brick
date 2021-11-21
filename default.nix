@@ -1,15 +1,4 @@
 let
-  pkgsv = import (import ./nix/nixpkgs.nix);
-  pkgs = pkgsv {};
-  validity-overlay = import (pkgs.fetchFromGitHub (import ./nix/validity-version.nix) + "/nix/overlay.nix");
-  cursor-overlay = import (pkgs.fetchFromGitHub (import ./nix/cursor-version.nix) + "/nix/overlay.nix");
-  cursorBrickPkgs = pkgsv {
-    overlays = [
-      validity-overlay
-      cursor-overlay
-      (import ./nix/gitignore-src.nix)
-      (import ./nix/overlay.nix)
-    ];
-    config.allowUnfree = true;
-  };
-in cursorBrickPkgs.cursorBrickPackages
+  pkgs = import ./nix/pkgs.nix { };
+in
+pkgs.cursorBrickPackages
