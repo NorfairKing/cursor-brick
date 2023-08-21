@@ -1,14 +1,14 @@
-resolver: lts-20.55
+resolver: lts-20.25
 packages:
 - cursor-brick
 extra-deps:
 - github: NorfairKing/cursor
-  commit: ff27e78281430c298a25a7805c9c61ca1e69f4c5
+  commit: ae8727c0109d0706019413b36095b50541f37e5a
   subdirs:
     - cursor
     - cursor-gen
 - github: NorfairKing/validity
-  commit: 35bc8d45b27e6c21429e4b681b16e46ccd541b3b
+  commit: 20ddbd625304817694b7ae9dc8751f7456259dd6
   subdirs:
   - genvalidity
   - genvalidity-aeson

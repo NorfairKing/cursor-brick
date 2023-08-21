@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.34.6.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 82a9a86981d41920d447ea66bb4dd96699c682e74f16c813673d5ede5e28fdb9
+-- hash: 349b15d6a64ec0b0fde25d2fde7d232dba89d71a0bcd12760047dcdb00a9800d
 
 name:           cursor-brick
 version:        0.1.0.1
@@ -13,7 +13,7 @@ homepage:       https://github.com/NorfairKing/cursor-brick#readme
 bug-reports:    https://github.com/NorfairKing/cursor-brick/issues
 author:         Tom Sydney Kerckhove
 maintainer:     syd@cs-syd.eu
-copyright:      Copyright: (c) 2019-2021 Tom Sydney Kerckhove
+copyright:      Copyright: (c) 2019-2022 Tom Sydney Kerckhove
 license:        MIT
 license-file:   LICENSE
 build-type:     Simple
