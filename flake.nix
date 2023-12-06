@@ -1,20 +1,22 @@
 {
   description = "cursor-brick";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
+    nixpkgs-23_05.url = "github:NixOS/nixpkgs?ref=nixos-23.05";
+    nixpkgs-22_11.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
+    nixpkgs-22_05.url = "github:NixOS/nixpkgs?ref=nixos-22.05";
+    nixpkgs-21_11.url = "github:NixOS/nixpkgs?ref=nixos-21.11";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     validity.url = "github:NorfairKing/validity";
     validity.flake = false;
     cursor.url = "github:NorfairKing/cursor";
     cursor.flake = false;
-    nixpkgs-22_11.url = "github:NixOS/nixpkgs?ref=nixos-22.11";
-    nixpkgs-22_05.url = "github:NixOS/nixpkgs?ref=nixos-22.05";
-    nixpkgs-21_11.url = "github:NixOS/nixpkgs?ref=nixos-21.11";
   };
 
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-23_05
     , nixpkgs-22_11
     , nixpkgs-22_05
     , nixpkgs-21_11
@@ -45,6 +47,7 @@
             in pkgs'.haskellPackages.cursor-brick;
           allNixpkgs = {
             inherit
+              nixpkgs-23_05
               nixpkgs-22_11
               nixpkgs-22_05
               nixpkgs-21_11;
