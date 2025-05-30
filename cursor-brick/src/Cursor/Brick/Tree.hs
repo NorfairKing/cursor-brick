@@ -10,7 +10,7 @@ import qualified Data.List.NonEmpty as NE
 
 verticalPaddedTreeCursorWidgetM ::
   forall a b n m.
-  Monad m =>
+  (Monad m) =>
   (a -> m (Widget n)) ->
   (b -> m (Widget n)) ->
   Int ->
@@ -80,7 +80,7 @@ verticalPaddedTreeCursorWidget goA goB padding = treeCursorWidget wrap cur
 
 treeCursorWidgetM ::
   forall a b n m.
-  Monad m =>
+  (Monad m) =>
   ([CTree b] -> b -> [CTree b] -> Widget n -> m (Widget n)) ->
   (a -> CForest b -> m (Widget n)) ->
   TreeCursor a b ->

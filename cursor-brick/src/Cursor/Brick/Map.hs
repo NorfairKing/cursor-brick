@@ -22,7 +22,7 @@ horizontalMapCursorWidget beforeFunc curFunc afterFunc =
         ]
 
 horizontalMapCursorWidgetM ::
-  Applicative f =>
+  (Applicative f) =>
   (k -> v -> f (Widget n)) ->
   (KeyValueCursor kc vc k v -> f (Widget n)) ->
   (k -> v -> f (Widget n)) ->
@@ -55,7 +55,7 @@ verticalMapCursorWidget beforeFunc curFunc afterFunc =
         ]
 
 verticalMapCursorWidgetM ::
-  Applicative f =>
+  (Applicative f) =>
   (k -> v -> f (Widget n)) ->
   (KeyValueCursor kc vc k v -> f (Widget n)) ->
   (k -> v -> f (Widget n)) ->

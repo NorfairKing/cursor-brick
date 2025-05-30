@@ -11,7 +11,7 @@ verticalNonEmptyCursorTableWithHeader prevFunc curFunc nextFunc header =
   nonEmptyCursorWidget (\ps c ns -> tableWidget $ header : (map prevFunc ps ++ [curFunc c] ++ map nextFunc ns))
 
 verticalNonEmptyCursorTableWithHeaderM ::
-  Applicative f =>
+  (Applicative f) =>
   (b -> f [Widget n]) ->
   (a -> f [Widget n]) ->
   (b -> f [Widget n]) ->
@@ -30,7 +30,7 @@ verticalNonEmptyCursorTable prevFunc curFunc nextFunc =
     )
 
 verticalNonEmptyCursorTableM ::
-  Applicative f =>
+  (Applicative f) =>
   (b -> f [Widget n]) ->
   (a -> f [Widget n]) ->
   (b -> f [Widget n]) ->
@@ -43,7 +43,7 @@ tableWidget :: [[Widget n]] -> Widget n
 tableWidget = hBox . intersperse (str " ") . map vBox . transpose
 
 horizontalNonEmptyCursorWidgetM ::
-  Applicative f =>
+  (Applicative f) =>
   (b -> f (Widget n)) ->
   (a -> f (Widget n)) ->
   (b -> f (Widget n)) ->
@@ -67,7 +67,7 @@ horizontalNonEmptyCursorWidget beforeFunc curFunc afterFunc =
       concat [map beforeFunc befores, [curFunc current], map afterFunc afters]
 
 verticalNonEmptyCursorWidgetM ::
-  Applicative f =>
+  (Applicative f) =>
   (b -> f (Widget n)) ->
   (a -> f (Widget n)) ->
   (b -> f (Widget n)) ->

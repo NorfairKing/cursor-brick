@@ -12,7 +12,7 @@ import Cursor.Tree
 import qualified Data.List.NonEmpty as NE
 
 horizontalForestCursorWidgetM ::
-  Monad m =>
+  (Monad m) =>
   (CTree b -> m (Widget n)) ->
   (TreeCursor a b -> m (Widget n)) ->
   (CTree b -> m (Widget n)) ->
@@ -34,7 +34,7 @@ horizontalForestCursorWidget prevFunc curFunc nextFunc =
 
 verticalPaddedForestCursorWidgetM ::
   forall a b n m.
-  Monad m =>
+  (Monad m) =>
   (a -> m (Widget n)) ->
   (b -> m (Widget n)) ->
   Int ->
@@ -79,7 +79,7 @@ verticalPaddedForestCursorWidget goA goB padding =
       OpenForest nect -> vBox $ map goCTree $ NE.toList nect
 
 verticalForestCursorWidgetM ::
-  Monad m =>
+  (Monad m) =>
   (CTree b -> m (Widget n)) ->
   (TreeCursor a b -> m (Widget n)) ->
   (CTree b -> m (Widget n)) ->
